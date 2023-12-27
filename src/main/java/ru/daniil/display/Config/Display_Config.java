@@ -1,4 +1,4 @@
-package ru.daniil.view.display.Config;
+package ru.daniil.display.Config;
 
 
 import java.io.IOException;
@@ -23,24 +23,30 @@ public class Display_Config extends Display_Const {
         updateDisplay();
     }
 
+    public void init() {
+        show_logo();
+        updateDisplay();
+        addAppTitle();
+    }
+
     protected void updateDisplay() {
         init_Display();
         init_Horizontal_line();
         init_Vertical_line();
 
-        set_in_display();
+        setInDisplay();
+        addAppTitle();
 
         fillEmptiness();
-        setTitle();
+        setCommandLine();
     }
 
     public void show_logo() {
         System.out.println(logo_image);
-        System.out.println(logo_text);
 
     }
 
-    private void setTitle() {
+    private void setCommandLine() {
         if (NEXT_COMMAND == null) {
             NEXT_COMMAND = " ";
         }
@@ -50,6 +56,16 @@ public class Display_Config extends Display_Const {
                 NEXT_COMMAND_location[Y_POINT],
                 NEXT_COMMAND);
         addToDisplay(title_map);
+    }
+
+    private void addAppTitle() {
+        int x = get_X_for_centering(APP_TITLE);
+        int y = 1;
+
+        Map<String, String> stringWithCoordinates;
+
+        stringWithCoordinates = prepareToInsertInMap(x, y, APP_TITLE);
+        addToDisplay(stringWithCoordinates);
     }
 
     private void init_Horizontal_line() {
@@ -104,7 +120,7 @@ public class Display_Config extends Display_Const {
         }
     }
 
-    private void set_in_display() {
+    private void setInDisplay() {
 
         for (int[] coordinates_X_Y : location_top_line_Frame) {
             String x = String.valueOf(coordinates_X_Y[X_POINT]);
@@ -140,16 +156,6 @@ public class Display_Config extends Display_Const {
             String coordinates = getCoordinates(x, y);
             working_display.put(coordinates, symbol_frame_y);
         }
-
-
-//        for (int[] coordinates_X_Y : lineLocation_down) {
-//            String x = String.valueOf(coordinates_X_Y[X_POINT]);
-//            String y = String.valueOf(coordinates_X_Y[Y_POINT]);
-//            String coordinates = getCoordinates(x, y);
-//            working_display.putIfAbsent(coordinates, frameSymbol_x);
-//        }
-
-
     }
 
     protected Map<String, String> prepareToInsertInMap(int x, int y, String str) {

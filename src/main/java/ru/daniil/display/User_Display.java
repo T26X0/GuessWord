@@ -1,9 +1,10 @@
-package ru.daniil.view.display;
+package ru.daniil.display;
 
 
-import ru.daniil.view.display.Config.Blocks_Text;
-import ru.daniil.view.display.Config.Display_Config;
+import ru.daniil.display.Config.Blocks_Text;
+import ru.daniil.display.Config.Display_Config;
 
+import java.util.Arrays;
 import java.util.Map;
 
 /**
@@ -18,6 +19,17 @@ public class User_Display extends Display_Config {
         super();
     }
 
+    public void initDisplay() {
+        init();
+    }
+
+    public void add(String suggestWord, String[] suggestWordResult) {
+        System.out.println(suggestWord + lineCounter);
+        add(suggestWord, Blocks_Text.SUGGEST_WORD);
+        lineCounter--;
+        add(Arrays.toString(suggestWordResult), Blocks_Text.SUGGEST_WORD_RESULT);
+    }
+
     public void add(String str, Blocks_Text textBlock) {
         int x = get_X_for_centering(str);
         int y = 0;
@@ -27,6 +39,21 @@ public class User_Display extends Display_Config {
         if (textBlock == Blocks_Text.HIDDEN_WORD) {
 
             y = Blocks_Text.HIDDEN_WORD.coordinates[lineCounter];
+        }
+
+        if (textBlock == Blocks_Text.SUGGEST_WORD) {
+
+            y = Blocks_Text.SUGGEST_WORD.coordinates[lineCounter];
+        }
+
+        if (textBlock == Blocks_Text.SUGGEST_WORD_RESULT) {
+
+            y = Blocks_Text.SUGGEST_WORD_RESULT.coordinates[lineCounter];
+        }
+
+        if (textBlock == Blocks_Text.SUGGEST_WORD_RESULT) {
+
+            y = Blocks_Text.SUGGEST_WORD_RESULT.coordinates[lineCounter];
         }
 
         if (textBlock == Blocks_Text.NOTIFICATION) {
@@ -61,10 +88,12 @@ public class User_Display extends Display_Config {
         updateDisplay();
     }
 
-    public void show() {
+    public void show(boolean resetLineCounter) {
         purify_display();
         show_display();
-        resetLineCounter();
+        if (resetLineCounter) {
+            resetLineCounter();
+        }
     }
 
     public void setNewLetter(String letter) {

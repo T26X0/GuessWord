@@ -1,9 +1,10 @@
-package ru.daniil.view;
+package ru.daniil.app;
 
-import ru.daniil.view.display.Config.Blocks_Text;
-import ru.daniil.view.display.Config.Display_Const;
-import ru.daniil.view.display.User_Display;
+import ru.daniil.display.Config.Blocks_Text;
+import ru.daniil.display.User_Display;
+import ru.daniil.display.Config.Display_Const;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class GuessApp {
@@ -22,38 +23,32 @@ public class GuessApp {
 class Begin {
 
     private static final GuessApp APP = new GuessApp();
-    private static final  User_Display display = new User_Display();
-    private static int attemptsCount = 5;
+    private static final User_Display display = new User_Display();
     private static String wordThatNeedToGuess;
     private static String[] arrayWordThatNeedToGuess;
 
 
     public static void main(String[] args) {
+        display.initDisplay();
         display.update("Enter the word for guess: ");
-        display.show();
+        display.show(true);
 
         wordThatNeedToGuess = APP.getInput();
         arrayWordThatNeedToGuess = wordThatNeedToGuess.split("");
 
-        System.out.println(wordThatNeedToGuess);
-
-        display.update("You have " + attemptsCount + " attempts :D");
+        display.update("You have " + Display_Const.attemptsCount + " attempts :D");
         display.add(Display_Const.DEFAULT_HIDDEN_WORD, Blocks_Text.HIDDEN_WORD);
-        display.show();
+        display.show(true);
 
         runGame();
-//        System.out.println("You need to guess word that invented another user");
-//        System.out.println("You have five attempts!!!");
-//        System.out.println("Good luck :D");
-
-
     }
 
     private static void runGame() {
         String suggestedWord;
+        Display_Const.setAttemptsCount();
 
         while (true) {
-            if (attemptsCount == 0) {
+            if (Display_Const.attemptsCount == 0) {
                 // TODO user is lose
             }
 
@@ -63,8 +58,10 @@ class Begin {
             }
 
             String[] letterCondition = analyzeLetter(suggestedWord);
+            Display_Const.attemptsCount--;
 
-            attemptsCount--;
+            display.add(suggestedWord, letterCondition);
+            display.show(false);
         }
     }
 
@@ -75,9 +72,10 @@ class Begin {
         for (int i = 0; i < arraySuggestedWord.length; i++) {
             if (arraySuggestedWord[i].equals(arrayWordThatNeedToGuess[i])) {
                 resultOfChecking[i] = User_Display.symbolLetterNeed;
-            }
-            if (wordThatNeedToGuess.indexOf(arraySuggestedWord[i]) > 0) {
+            } else if (wordThatNeedToGuess.indexOf(arraySuggestedWord[i]) > 0) {
                 resultOfChecking[i] = Display_Const.symbolLetterWrongPlace;
+            } else {
+                resultOfChecking[i] = Display_Const.symbolLetterNoNeed;
             }
         }
 
