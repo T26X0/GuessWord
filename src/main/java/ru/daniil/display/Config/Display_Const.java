@@ -8,6 +8,7 @@ public class Display_Const {
     protected static String NEXT_COMMAND;
     protected static int[] NEXT_COMMAND_location;
     protected static String logo_image;
+    public static int attemptsCount = getDefaultAttemptsCount();
 
     public static String DEFAULT_HIDDEN_WORD;
 
@@ -23,7 +24,10 @@ public class Display_Const {
 
     protected static int location_Y_headline;
 
-    protected static int[] textBlock_TITLE_location_Y = new int[1];
+    protected static int[] textBlock_HIDDEN_WORD_location_Y = new int[1];
+    protected static int[] textBlock_SUGGEST_WORD_location_Y = new int[5];
+    protected static int[] textBlock_SUGGEST_WORD_RESULT_location_Y = new int[5];
+
     protected static int[] textBlock_NOTIFICATION_location_Y = new int[2];
     protected static int[] textBlock_CONTENT_location_Y = new int[4];
     protected static int messages_position_X;
@@ -67,7 +71,19 @@ public class Display_Const {
     private static void set_displayValues() {
         location_Y_headline = 1;
 
-        textBlock_TITLE_location_Y[0] = 4;
+        textBlock_HIDDEN_WORD_location_Y[0] = 4;
+
+        textBlock_SUGGEST_WORD_location_Y[0] = 8;
+        textBlock_SUGGEST_WORD_location_Y[1] = 10;
+        textBlock_SUGGEST_WORD_location_Y[2] = 12;
+        textBlock_SUGGEST_WORD_location_Y[3] = 14;
+        textBlock_SUGGEST_WORD_location_Y[4] = 16;
+
+        textBlock_SUGGEST_WORD_RESULT_location_Y[0] = textBlock_SUGGEST_WORD_location_Y[0] + 1;
+        textBlock_SUGGEST_WORD_RESULT_location_Y[1] = textBlock_SUGGEST_WORD_location_Y[1] + 1;
+        textBlock_SUGGEST_WORD_RESULT_location_Y[2] = textBlock_SUGGEST_WORD_location_Y[2] + 1;
+        textBlock_SUGGEST_WORD_RESULT_location_Y[3] = textBlock_SUGGEST_WORD_location_Y[3] + 1;
+        textBlock_SUGGEST_WORD_RESULT_location_Y[4] = textBlock_SUGGEST_WORD_location_Y[4] + 1;
 
         textBlock_NOTIFICATION_location_Y[0] = 5;
         textBlock_NOTIFICATION_location_Y[1] = 6;
@@ -107,5 +123,13 @@ public class Display_Const {
 
     protected static int get_X_centerDisplay() {
         return (SIZE_DISPLAY_X / 2);
+    }
+
+    private static int getDefaultAttemptsCount() {
+        return 5;
+    }
+
+    public static void setAttemptsCount() {
+        attemptsCount = getDefaultAttemptsCount();
     }
 }

@@ -156,16 +156,6 @@ public class Display_Config extends Display_Const {
             String coordinates = getCoordinates(x, y);
             working_display.put(coordinates, symbol_frame_y);
         }
-
-
-//        for (int[] coordinates_X_Y : lineLocation_down) {
-//            String x = String.valueOf(coordinates_X_Y[X_POINT]);
-//            String y = String.valueOf(coordinates_X_Y[Y_POINT]);
-//            String coordinates = getCoordinates(x, y);
-//            working_display.putIfAbsent(coordinates, frameSymbol_x);
-//        }
-
-
     }
 
     protected Map<String, String> prepareToInsertInMap(int x, int y, String str) {

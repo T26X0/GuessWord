@@ -4,9 +4,19 @@ package ru.daniil.display.Config;
 public enum Blocks_Text {
 
     /**
-     * Provides ONE LINE for TITLE block
+     * Provides ONE LINE for HIDDEN block
      */
-    HIDDEN_WORD(Display_Const.textBlock_TITLE_location_Y),
+    HIDDEN_WORD(Display_Const.textBlock_HIDDEN_WORD_location_Y),
+
+    /**
+     * Provides FIVE LINE for SUGGEST block
+     */
+    SUGGEST_WORD(Display_Const.textBlock_SUGGEST_WORD_location_Y),
+
+    /**
+     * Provides FIVE LINE for SUGGEST block
+     */
+    SUGGEST_WORD_RESULT(Display_Const.textBlock_SUGGEST_WORD_RESULT_location_Y),
 
     /**
      * Provides TWO LINES for NOTIFICATION block
