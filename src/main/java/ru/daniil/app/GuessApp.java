@@ -1,8 +1,8 @@
-package ru.daniil.view;
+package ru.daniil.app;
 
-import ru.daniil.view.display.Config.Blocks_Text;
-import ru.daniil.view.display.Config.Display_Const;
-import ru.daniil.view.display.User_Display;
+import ru.daniil.display.Config.Blocks_Text;
+import ru.daniil.display.User_Display;
+import ru.daniil.display.Config.Display_Const;
 
 import java.util.Scanner;
 
@@ -22,7 +22,7 @@ public class GuessApp {
 class Begin {
 
     private static final GuessApp APP = new GuessApp();
-    private static final  User_Display display = new User_Display();
+    private static final User_Display display = new User_Display();
     private static int attemptsCount = 5;
     private static String wordThatNeedToGuess;
     private static String[] arrayWordThatNeedToGuess;

@@ -1,8 +1,8 @@
-package ru.daniil.view.display;
+package ru.daniil.display;
 
 
-import ru.daniil.view.display.Config.Blocks_Text;
-import ru.daniil.view.display.Config.Display_Config;
+import ru.daniil.display.Config.Blocks_Text;
+import ru.daniil.display.Config.Display_Config;
 
 import java.util.Map;
 

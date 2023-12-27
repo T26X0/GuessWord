@@ -1,4 +1,4 @@
-package ru.daniil.view.display.Config;
+package ru.daniil.display.Config;
 
 public enum Blocks_Exception {
     SERVER_UNAVAILABLE(new String[] {
