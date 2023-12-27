@@ -29,6 +29,7 @@ class Begin {
 
 
     public static void main(String[] args) {
+        display.initDisplay();
         display.update("Enter the word for guess: ");
         display.show();
 

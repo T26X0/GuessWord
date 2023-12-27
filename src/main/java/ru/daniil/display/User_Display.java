@@ -18,6 +18,10 @@ public class User_Display extends Display_Config {
         super();
     }
 
+    public void initDisplay() {
+        init();
+    }
+
     public void add(String str, Blocks_Text textBlock) {
         int x = get_X_for_centering(str);
         int y = 0;

@@ -4,10 +4,10 @@ package ru.daniil.display.Config;
 public class Display_Const {
     protected static final int X_POINT = 0;
     protected static final int Y_POINT = 1;
+    protected static String APP_TITLE;
     protected static String NEXT_COMMAND;
     protected static int[] NEXT_COMMAND_location;
     protected static String logo_image;
-    protected static String logo_text;
 
     public static String DEFAULT_HIDDEN_WORD;
 
@@ -43,6 +43,7 @@ public class Display_Const {
     private static void set_appValues() {
         SIZE_DISPLAY_X = 30;
         SIZE_DISPLAY_Y = 21;
+        APP_TITLE = "GUESS WORDS";
 
         DEFAULT_HIDDEN_WORD = "[][][][][]";
         symbol_frame_x = "_";
@@ -82,7 +83,7 @@ public class Display_Const {
 
     private static void set_logo() {
         logo_image =
-                "⠀     ⠀        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣶⣶⣿⣿⣿⣶⣶⣤⣄⡀⠀⠀⠀⠀⠀\n" +
+                        "⠀     ⠀        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣶⣶⣿⣿⣿⣶⣶⣤⣄⡀⠀⠀⠀⠀⠀\n" +
                         "⠀  ⠀⠀         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣿⣯⢿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣦⠀⠀⠀⠀\n" +
                         "⠀      ⠀     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣯⣽⣶⣶⣾⣕⣝⣧⣣⢫⡋⡿⠿⣇⠀⠀⠀\n" +
                         "⠀         ⠀  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⣿⣿⣿⢖⢬⣍⠻⣿⣿⡜⢧⠑⣴⣿⣿⣦⠀⠀\n" +
@@ -98,12 +99,6 @@ public class Display_Const {
                         "       ⠀⠀⠀⠀  ⠀  ⠀⠀⠀⠀⠀⠀⠙⠛⠛⣿⣿⣿⣶⣤⣤⣈⡉⠉⠉⠉⠉⠉⠉⠉⠁⠀\n" +
                         "       ⠀⠀⠀⠀⠀⠀  ⠀⠀  ⠀⠀⠀⠀⠀⠀⠈⠻⣯⣭⣯⣭⣤⣶⣶⣶⣶⣦⣤⡈⠁⠀⠀\n" +
                         "       ⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠀  ⠀⠀⠀⠀⠀⠈⠛⠛⠿⠛⠛⠁⠈⠉⠙⠛⠁⠀⠀";
-        logo_text =
-                "         _      _                  ____                    _             \n" +
-                        "        | |    (_) _ __    ___    / ___|   ___  _ __    __| |  ___  _ __ \n" +
-                        "        | |    | || '_ \\  / _ \\   \\___ \\  / _ \\| '_ \\  / _` | / _ \\| '__|\n" +
-                        "        | |___ | || | | ||  __/    ___) ||  __/| | | || (_| ||  __/| |   \n" +
-                        "        |_____||_||_| |_| \\___|   |____/  \\___||_| |_| \\__,_| \\___||_|   ";
     }
 
     protected static int get_X_for_centering(String str) {
@@ -113,26 +108,4 @@ public class Display_Const {
     protected static int get_X_centerDisplay() {
         return (SIZE_DISPLAY_X / 2);
     }
-
-    /**
-     * <h3>Fills the resulting row at the edges</h3>
-     * The input string is in the middle
-     *
-     * @param str String
-     * @return String
-     */
-    private static String filledLine(String str) {
-        int str_startsWIth = get_X_for_centering(str);
-        StringBuilder filled_string = new StringBuilder();
-
-        for (int i = 0; i < str_startsWIth - 1; i++) {
-            filled_string.append(symbol_for_lineFilling);
-        }
-        filled_string.append(str);
-        for (int i = str_startsWIth + str.length(); i < SIZE_DISPLAY_X - 1; i++) {
-            filled_string.append(symbol_for_lineFilling);
-        }
-        return filled_string.toString();
-    }
-
 }
