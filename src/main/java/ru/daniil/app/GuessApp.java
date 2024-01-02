@@ -118,6 +118,7 @@ class Begin {
             }
 
             suggestedWord = APP.getInput();
+            char[] allLettersFromSuggestedWord = suggestedWord.toCharArray();
             if (suggestedWord.equals(wordThatNeedToGuess)) {
                 congratulation();
             } else {
@@ -126,7 +127,7 @@ class Begin {
                     attemptsCount--;
 
                     display.setNextCommand("You have " + attemptsCount + " attempts :D    ");
-                    display.add(suggestedWord, TextBlocks.CONTENT, CenterMod.MID);
+                    display.add(Arrays.toString(allLettersFromSuggestedWord), TextBlocks.CONTENT, CenterMod.MID);
                     display.add(Arrays.toString(letterCondition), TextBlocks.CONTENT, CenterMod.MID);
                 }
                 updateAndShowDisplay();
