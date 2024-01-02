@@ -119,18 +119,38 @@ class Begin {
 
             suggestedWord = APP.getInput();
             if (suggestedWord.equals(wordThatNeedToGuess)) {
-                startNewGame();
+                congratulation();
             } else {
+                if (suggestedWord.length() == wordThatNeedToGuess.length()) {
+                    String[] letterCondition = analyzeLetter(suggestedWord);
+                    attemptsCount--;
 
-                String[] letterCondition = analyzeLetter(suggestedWord);
-                attemptsCount--;
-
-                display.setNextCommand("You have " + attemptsCount + " attempts :D    ");
-                display.add(suggestedWord, TextBlocks.CONTENT, CenterMod.MID);
-                display.add(Arrays.toString(letterCondition), TextBlocks.CONTENT, CenterMod.MID);
+                    display.setNextCommand("You have " + attemptsCount + " attempts :D    ");
+                    display.add(suggestedWord, TextBlocks.CONTENT, CenterMod.MID);
+                    display.add(Arrays.toString(letterCondition), TextBlocks.CONTENT, CenterMod.MID);
+                }
                 updateAndShowDisplay();
             }
         }
+    }
+
+    private static void congratulation() throws TextBlockFilledException {
+        display.resetRequiredFields();
+        display.resetAllDisplay();
+        display.add("YOU ARE WIN", TextBlocks.CONTENT, CenterMod.MID);
+        display.add("YOU ARE WIN", TextBlocks.CONTENT, CenterMod.MID);
+        display.add("YOU ARE WIN", TextBlocks.CONTENT, CenterMod.MID);
+        display.add("YOU ARE WIN", TextBlocks.CONTENT, CenterMod.MID);
+        display.add("YOU ARE WIN", TextBlocks.CONTENT, CenterMod.MID);
+        display.add("YOU ARE WIN", TextBlocks.CONTENT, CenterMod.MID);
+        display.add("YOU ARE WIN", TextBlocks.CONTENT, CenterMod.MID);
+        display.add("YOU ARE WIN", TextBlocks.CONTENT, CenterMod.MID);
+        display.add("YOU ARE WIN", TextBlocks.CONTENT, CenterMod.MID);
+        display.add("YOU ARE WIN", TextBlocks.CONTENT, CenterMod.MID);
+        display.add("YOU ARE WIN", TextBlocks.CONTENT, CenterMod.MID);
+        display.add("YOU ARE WIN", TextBlocks.CONTENT, CenterMod.MID);
+        display.add("YOU ARE WIN", TextBlocks.CONTENT, CenterMod.MID);
+        display.update().show();
     }
 
     private static String[] analyzeLetter(String suggestedWord) {
@@ -143,7 +163,7 @@ class Begin {
                 allLetters.put(arraySuggestedLetters[i], symbolLetterNeed);
             } else if (wordThatNeedToGuess.indexOf(arraySuggestedLetters[i]) > 0) {
                 resultOfChecking[i] = symbolLetterWrongPlace;
-                allLetters.put(arraySuggestedLetters[i], symbolLetterWrongPlace);
+                allLetters.put(arraySuggestedLetters[i], symbolLetterNeed);
             } else {
                 resultOfChecking[i] = symbolLetterNoNeed;
             }
@@ -180,15 +200,19 @@ class Begin {
 
         switch (userAnswer) {
             case "1" -> {
+                allLetters = new HashMap<>();
                 startNewGame();
             }
             case "2" -> {
+                allLetters = new HashMap<>();
                 showGuessWord();
             }
             case "3" -> {
+                allLetters = new HashMap<>();
                 continueGameWithNewTries();
             }
             default -> {
+                allLetters = new HashMap<>();
                 display.resetAllDisplay();
                 display.add("...there is no such answer...", TextBlocks.TITLE, CenterMod.MID);
                 display.add("...try again...", TextBlocks.TITLE, CenterMod.MID);
@@ -198,6 +222,7 @@ class Begin {
     }
 
     private static void showGuessWord() throws TextBlockFilledException {
+        display.resetRequiredFields();
         display.resetAllDisplay();
         wordThatNeedToGuess = insertLettersInBrackets(wordThatNeedToGuess);
         addBasicCapForApp(wordThatNeedToGuess);
