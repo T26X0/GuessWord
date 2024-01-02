@@ -23,7 +23,7 @@ public class GuessApp {
 class Begin {
 
     private static final GuessApp APP = new GuessApp();
-    private static final String DEFAULT_HIDDEN_WORD = "[][][][][]";
+    private static final String DEFAULT_HIDDEN_LETTER = "[]";
     private static final String symbolLetterNoNeed = "-";
     private static final String symbolLetterWrongPlace = "?";
     private static final String symbolLetterNeed = "+";
@@ -105,9 +105,14 @@ class Begin {
 
     private static void cycleGuessWord() throws TextBlockFilledException {
         String suggestedWord;
+        String guessWord = "";
+        for (int i = 0; i < wordThatNeedToGuess.length(); i++) {
+            guessWord += DEFAULT_HIDDEN_LETTER;
+        }
 
         display.resetAllDisplay();
-        addBasicCapForApp(DEFAULT_HIDDEN_WORD);
+
+        addBasicCapForApp(guessWord);
         display.setNextCommand("You have " + attemptsCount + " attempts :D");
         updateAndShowDisplay();
 
