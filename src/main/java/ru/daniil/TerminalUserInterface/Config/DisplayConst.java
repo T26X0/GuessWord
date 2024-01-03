@@ -1,4 +1,4 @@
-package ru.daniil.tud.Config;
+package ru.daniil.TerminalUserInterface.Config;
 
 
 import java.util.HashMap;
