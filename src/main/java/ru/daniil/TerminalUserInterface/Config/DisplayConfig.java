@@ -1,6 +1,6 @@
-package ru.daniil.tud.Config;
+package ru.daniil.TerminalUserInterface.Config;
 
-import ru.daniil.tud.MyException.TextBlockFilledException;
+import ru.daniil.TerminalUserInterface.MyException.TextBlockFilledException;
 
 import java.io.IOException;
 import java.util.*;

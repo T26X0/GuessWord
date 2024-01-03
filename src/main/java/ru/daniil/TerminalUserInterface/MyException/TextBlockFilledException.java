@@ -1,4 +1,4 @@
-package ru.daniil.tud.MyException;
+package ru.daniil.TerminalUserInterface.MyException;
 
 public class TextBlockFilledException extends Exception {
 

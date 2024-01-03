@@ -1,11 +1,11 @@
-package ru.daniil.tud;
+package ru.daniil.TerminalUserInterface;
 
 
-import ru.daniil.tud.Config.CenterMod;
-import ru.daniil.tud.Config.DisplayConst;
-import ru.daniil.tud.Config.TextBlocks;
-import ru.daniil.tud.Config.DisplayConfig;
-import ru.daniil.tud.MyException.TextBlockFilledException;
+import ru.daniil.TerminalUserInterface.Config.CenterMod;
+import ru.daniil.TerminalUserInterface.Config.DisplayConst;
+import ru.daniil.TerminalUserInterface.Config.TextBlocks;
+import ru.daniil.TerminalUserInterface.Config.DisplayConfig;
+import ru.daniil.TerminalUserInterface.MyException.TextBlockFilledException;
 
 public class UserDisplay extends DisplayConfig {
 
