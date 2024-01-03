@@ -138,7 +138,7 @@ public class DisplayConfig extends DisplayConst {
     }
 
     protected void addNewElement
-            (String str, TextBlocks textBlock, int lineIndex, CenterMod inCenter) throws TextBlockFilledException {
+            (String str, TextBlocks textBlock, int lineIndex, CenterMod inCenter) {
         Map<String, String> mapWithCoordinates;
 
         mapWithCoordinates = getMapForInsert(str, textBlock, lineIndex, inCenter);
@@ -146,25 +146,30 @@ public class DisplayConfig extends DisplayConst {
     }
 
     protected void addNewElement
-            (String str, TextBlocks textBlock, CenterMod inCenter) throws TextBlockFilledException {
+            (String str, TextBlocks textBlock, CenterMod inCenter) {
         addNewElement(str, textBlock, DEFAULT_LINE_INDEX, inCenter);
     }
 
     protected void addNewElementsInRequiredAppField
-            (String str, TextBlocks textBlock, int lineIndex, CenterMod inCenter) throws TextBlockFilledException {
+            (String str, TextBlocks textBlock, int lineIndex, CenterMod inCenter) {
 
         Map<String, String> mapWithCoordinates = getMapForInsert(str, textBlock, lineIndex, inCenter);
         addMapToMap(mapWithCoordinates, requiredFields);
     }
 
     protected void addNewElementsInRequiredAppField
-            (String str, TextBlocks textBlock, CenterMod inCenter) throws TextBlockFilledException {
+            (String str, TextBlocks textBlock, CenterMod inCenter) {
         addNewElementsInRequiredAppField(str, textBlock, DEFAULT_LINE_INDEX, inCenter);
     }
 
     protected Map<String, String> getMapForInsert
-            (String str, TextBlocks textBlock, int lineIndex, CenterMod inCenter) throws TextBlockFilledException {
-        int[] coordinates = getCoordinateForTextBlock(str, textBlock, inCenter);
+            (String str, TextBlocks textBlock, int lineIndex, CenterMod inCenter) {
+        int[] coordinates;
+        try {
+            coordinates = getCoordinateForTextBlock(str, textBlock, inCenter);
+        } catch (TextBlockFilledException e) {
+            throw new RuntimeException(e);
+        }
 
         if (lineIndex != DEFAULT_LINE_INDEX) {
             switch (textBlock) {
@@ -299,18 +304,6 @@ public class DisplayConfig extends DisplayConst {
         if (coordinateY == locationDownLineFrame[0][Y_POINT]) blockName = "down line";
         System.out.print(" -> " + +lineCounterForDebug + " : " + blockName);
         lineCounterForDebug++;
-    }
-
-    protected Map<String, String> getEmptyLine(int coordinatesY) {
-
-        String coordinatesForKey;
-        Map<String, String> resultMap = new HashMap<>();
-
-        for (int i = 1; i < sizeDisplayX - 1; i++) {
-            coordinatesForKey = transformToStringCoordinates(i, coordinatesY);
-            resultMap.put(coordinatesForKey, " ");
-        }
-        return resultMap;
     }
 
     private void createHorizontalLine() {
