@@ -28,6 +28,11 @@ public class GuessApp {
         gameUtils.addHorizontalLineInDisplay();
     }
 
+    public static void main(String[] args) throws TextBlockFilledException {
+        GuessApp game = new GuessApp();
+        game.startNewGame();
+    }
+
     /**
      * Game entry point
      */
@@ -266,13 +271,5 @@ public class GuessApp {
         private void exitFromGame() {
             System.exit(0);
         }
-    }
-}
-
-
-class Game {
-    public static void main(String[] args) throws TextBlockFilledException {
-        GuessApp game = new GuessApp();
-        game.startNewGame();
     }
 }
