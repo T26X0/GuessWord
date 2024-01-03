@@ -69,13 +69,13 @@ public class GuessApp {
     private void cycleGuessWord() throws TextBlockFilledException {
         String guessWord = "";
 
+        display.resetAllDisplay();
         /*
          * Creating a line for "basic cap"
          */
         for (int i = 0; i < wordThatNeedToGuess.length(); i++) {
             guessWord += DEFAULT_HIDDEN_LETTER;
         }
-        display.resetAllDisplay();
         gameUtils.addBasicCapForApp(guessWord);
 
         /*
