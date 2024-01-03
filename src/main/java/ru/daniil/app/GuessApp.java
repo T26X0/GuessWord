@@ -1,9 +1,9 @@
-package ru.daniil.App;
+package ru.daniil.app;
 
-import ru.daniil.TerminalUserInterface.Config.CenterMod;
-import ru.daniil.TerminalUserInterface.Config.TextBlocks;
-import ru.daniil.TerminalUserInterface.MyException.TextBlockFilledException;
-import ru.daniil.TerminalUserInterface.UserDisplay;
+import ru.daniil.terminalUserInterface.config.CenterMod;
+import ru.daniil.terminalUserInterface.config.TextBlocks;
+import ru.daniil.terminalUserInterface.myException.TextBlockFilledException;
+import ru.daniil.terminalUserInterface.UserDisplay;
 
 import java.util.*;
 
