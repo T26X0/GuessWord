@@ -17,7 +17,7 @@ public class GuessApp {
     private int attemptsCount;
     private final int appWidth = 65;
     private final int appHeight = 30;
-    private final UserDisplay display = new UserDisplay(appWidth, appHeight, true);
+    private final UserDisplay display = new UserDisplay(appWidth, appHeight, false);
     private String wordThatNeedToGuess;
     private String[] letterArrayFromWordThatNeedToGuess;
     private Map<String, String> allNeedLetters = new HashMap<>();
